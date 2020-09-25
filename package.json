@@ -4,7 +4,7 @@
   "description": "Simple java script app for creating memes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/momchilmitev/meme/issues"
   },
-  "homepage": "https://github.com/momchilmitev/meme#readme"
+  "homepage": "https://github.com/momchilmitev/meme#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
 }
