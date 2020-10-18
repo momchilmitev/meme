@@ -7,3 +7,6 @@ class Memes {
 }
 
 new Memes();
+
+console.log(NODE_ENV);
+console.log(NAME);

@@ -4,7 +4,8 @@
   "description": "Simple java script app for creating memes",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,13 @@
     "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
+    "dotenv-webpack": "^4.0.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }

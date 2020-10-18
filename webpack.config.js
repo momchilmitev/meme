@@ -1,5 +1,11 @@
+require("dotenv").config();
+const webpack = require("webpack");
+
+const isProduction = process.env.NODE_ENV === "production";
+
 module.exports = {
   context: __dirname,
+  devtool: "eval-source-map",
   entry: {
     general: "./src/js/general.js",
     memes: "./src/js/memes.js",
@@ -7,6 +13,7 @@ module.exports = {
   output: {
     path: __dirname + "/dist",
     filename: "[name].js",
+    publicPath: "/dist/",
   },
   module: {
     rules: [
@@ -22,8 +29,23 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
       },
     ],
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      NAME: JSON.stringify(process.env.NAME),
+    }),
+  ],
 };
