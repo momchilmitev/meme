@@ -55,9 +55,3 @@ module.exports = {
     }),
   ],
 };
-
-if (isProduction) {
-  module.exports.plugins.push(
-    webpack.optimize.UglifyJsPlugin({ sourceMap: true })
-  );
-}
