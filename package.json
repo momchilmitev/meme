@@ -24,6 +24,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "dotenv-webpack": "^4.0.0",
+    "purifycss-webpack": "^0.7.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
