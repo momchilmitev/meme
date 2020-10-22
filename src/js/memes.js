@@ -88,6 +88,34 @@ class Memes {
     let nodes = [this.$topTextInput, this.$bottomTextInput, this.$imageInput];
     nodes.forEach((node) => node.addEventListener("keyup", this.createMeme));
     nodes.forEach((node) => node.addEventListener("change", this.createMeme));
+    this.$downloadButton.addEventListener(
+      "click",
+      this.downloadMeme.bind(this)
+    );
+  }
+
+  downloadMeme() {
+    if (!this.$imageInput.files[0]) {
+      this.$imageInput.parentElement.classList.add("has-error");
+      return;
+    }
+
+    if (this.$bottomTextInput.value === "") {
+      this.$imageInput.parentElement.classList.remove("has-error");
+      this.$bottomTextInput.parentElement.classList.add("has-error");
+      return;
+    }
+
+    this.$imageInput.parentElement.classList.remove("has-error");
+    this.$bottomTextInput.parentElement.classList.remove("has-error");
+
+    const imageSrc = this.$canvas.toDataURL("image/png");
+    let attribute = document.createAttribute("href");
+    attribute.value = imageSrc.replace(
+      /^data:image\/[^;]/,
+      "data:application/octet-stream"
+    );
+    this.$downloadButton.setAttributeNode(attribute);
   }
 }
 
