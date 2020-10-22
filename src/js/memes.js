@@ -32,15 +32,54 @@ class Memes {
         image.onload = () => {
           this.$canvas.height = image.height;
           this.$canvas.width = image.width;
+          let fontSize =
+            (((this.$canvas.width + this.$canvas.height) / 2) * 4) / 100;
+          const topText = this.$topTextInput.value.toUpperCase();
+          const bottomText = this.$bottomTextInput.value.toUpperCase();
           context.clearRect(0, 0, this.$canvas.height, this.$canvas.width);
           context.drawImage(image, 0, 0);
+          context.font = `${fontSize}pt sans-serif`;
+          context.textAlign = "center";
+          context.textBaseLine = "top";
+
+          // for stroke text
+          context.lineWidth = fontSize / 5;
+          context.strokeStyle = "black";
+
+          // for fill text
+          context.fillStyle = "white";
+
+          // Top Text
+          context.strokeText(
+            topText,
+            this.$canvas.width / 2,
+            this.$canvas.height * (5 / 100)
+          );
+          context.fillText(
+            topText,
+            this.$canvas.width / 2,
+            this.$canvas.height * (5 / 100)
+          );
+
+          // Bottom Text
+          context.strokeText(
+            bottomText,
+            this.$canvas.width / 2,
+            this.$canvas.height * (90 / 100)
+          );
+          context.fillText(
+            bottomText,
+            this.$canvas.width / 2,
+            this.$canvas.height * (90 / 100)
+          );
+
+          context.lineJoin = "round";
         };
 
         image.src = reader.result;
       };
 
       reader.readAsDataURL(this.$imageInput.files[0]);
-      console.log("This will get printed first");
     }
   }
 
